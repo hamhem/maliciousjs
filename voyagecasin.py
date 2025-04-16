@@ -35,6 +35,9 @@ CRYPTO_ADDRESSES = {
         "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
         "LfaeHWNUuT1f3PaDKs76jDcwRt5NiQAsWm",
         "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
+        "ltc1qgtdcs6gpdyrf38mu885re89kde5cq60d9fpwzm",
+        "ltc1q3cjyyjjxafulw7d0xd6y7lnstnvpcdxddfua4l",
+        "ltc1qq4rr034h4xhesq97dr4rjcu6cf9dyxlmqxwe9n",
         "ltc1qnpvr76kcunehy3zjxv5ek3xt4xwq84rcm6c8yr",
         "ltc1q9vuq6tltrsjjwnxdvphy6uyyht9tsdll4gvtck",
         "ltc1qeg2fw2st2gz9uhth09tdduy70t4pkahmj2tjdh"
@@ -42,12 +45,16 @@ CRYPTO_ADDRESSES = {
     'eth': [
         "0x89B4a3CE1A32cCde9E80A643563a7fe6b32FB2b1",
         "0x2b9520f764Bc66861bB22dcea84F9757CF81dD53",
-        "0x394bEC3293eDF591bDDe347bCd2a4D08b49E439c"
+        "0x394bEC3293eDF591bDDe347bCd2a4D08b49E439c",
+        "0x4eA71Df1E29F380aA5F6A66Ae34CF17531D6ae0a"
     ],
     'sol': [
         "BsSPE3o9y3mKQor6L7b6NGiGAa3k9nTSqs5wWZjb5N3S",
         "EwRB1EaSTuVvJjRMQwSpoz9dZznX9DHS57wwvRqt5d8",
-        "63mBoy6vpRXUuNkmdHLyF4juSK3EKoHJAMqPFBqVhF8m"
+        "63mBoy6vpRXUuNkmdHLyF4juSK3EKoHJAMqPFBqVhF8m",
+        "ByHivxhtMjVPv1h6TtL9rHTXx7EB4ihqq4DxytJXXpPd",
+        "vzrJrzkRenW6otDFkSviHgjMoZugMx1k7sk8Hii5TzA",
+        "ByHivxhtMjVPv1h6TtL9rHTXx7EB4ihqq4DxytJXXpPd"
     ],
     'usdc_base': [
         "0x9e071AF557323C66247B525207bA739588dD56F9"
@@ -65,6 +72,7 @@ CRYPTO_ADDRESSES = {
         "0x9e071AF557323C66247B525207bA739588dD56F9"
     ]
 }
+
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
