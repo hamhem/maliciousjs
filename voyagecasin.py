@@ -34,7 +34,10 @@ CRYPTO_ADDRESSES = {
     'ltc': [
         "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
         "LfaeHWNUuT1f3PaDKs76jDcwRt5NiQAsWm",
-        "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm"
+        "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
+        "ltc1qnpvr76kcunehy3zjxv5ek3xt4xwq84rcm6c8yr",
+        "ltc1q9vuq6tltrsjjwnxdvphy6uyyht9tsdll4gvtck",
+        "ltc1qeg2fw2st2gz9uhth09tdduy70t4pkahmj2tjdh"
     ],
     'eth': [
         "0x89B4a3CE1A32cCde9E80A643563a7fe6b32FB2b1",
