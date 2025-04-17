@@ -316,6 +316,44 @@ async def mypreds(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=keyboard
     )
 
+async def handle_withdraw(query: CallbackQuery, context: ContextTypes.DEFAULT_TYPE, coin: str, fee: str, minimum: str):
+    text = (
+        f"<b>Withdraw {coin} to your wallet</b>\n\n"
+        f"Fees: <b>{fee}</b>\n"
+        f"Minimum withdrawal: <b>{minimum}</b>\n\n"
+        "Choose withdrawal amount, or send a custom one"
+    )
+
+    keyboard = [
+        [InlineKeyboardButton("Balance too low", callback_data="noop")],
+        [InlineKeyboardButton("🔙", callback_data="withdraw")]
+    ]
+
+    await query.edit_message_text(
+        text=text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="HTML"
+    )
+
+# Map callback data to coin info
+withdraw_coin_info = {
+    "withdraw_btc": ("Bitcoin (BTC)", "$5", "$6"),
+    "withdraw_ltc": ("Litecoin (LTC)", "$0.1", "$1"),
+    "withdraw_ton": ("Toncoin (TON)", "$0.1", "$1"),
+    "withdraw_eth": ("Ethereum (ETH)", "$0.03", "$5"),
+    "withdraw_usdt_erc20": ("USDT (ERC20)", "$0.09", "$10"),
+    "withdraw_usdc_erc20": ("USDC (ERC20)", "$0.09", "$10"),
+    "withdraw_usdt_pol": ("USDT (POL)", "$0.02", "$1"),
+    "withdraw_usdc_pol": ("USDC (POL)", "$0.02", "$1"),
+    "withdraw_sol": ("Solana (SOL)", "$0.05", "$1"),
+    "withdraw_trx": ("Tron (TRX)", "$0.74", "$5"),
+    "withdraw_usdt_trc20": ("USDT (TRC20)", "$7.44", "$30"),
+    "withdraw_bnb_bep20": ("BNB (BEP20)", "$0.02", "$1"),
+    "withdraw_usdt_bep20": ("USDT (BEP20)", "$0.09", "$5"),
+    "withdraw_xmr": ("Monero (XMR)", "$1", "$3"),
+}
+
+
 async def maxbet(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         "<b>Maximum allowed bets</b>\n\n"
@@ -1580,6 +1618,11 @@ Accepted tokens: USDT (SOL), USDC (SOL)
         )
         
         active_menus[query.message.message_id] = user_id
+
+    elif query.data in withdraw_coin_info:
+        coin, fee, minimum = withdraw_coin_info[query.data]
+        await handle_withdraw(query, context, coin, fee, minimum)
+
 
         
     elif query.data == 'refer':
