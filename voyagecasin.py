@@ -1,4 +1,4 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, CallbackQuery
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes, ChatMemberHandler, filters, MessageHandler
 from datetime import datetime, timedelta
 import logging
@@ -319,13 +319,13 @@ async def mypreds(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_withdraw(query: CallbackQuery, context: ContextTypes.DEFAULT_TYPE, coin: str, fee: str, minimum: str):
     text = (
         f"<b>Withdraw {coin} to your wallet</b>\n\n"
-        f"Fees: <b>{fee}</b>\n"
+        f"Fees: <b>{fee}</b>\n\n"
         f"Minimum withdrawal: <b>{minimum}</b>\n\n"
         "Choose withdrawal amount, or send a custom one"
     )
 
     keyboard = [
-        [InlineKeyboardButton("Balance too low", callback_data="noop")],
+        [InlineKeyboardButton("Balance is too low", callback_data="noop")],
         [InlineKeyboardButton("🔙", callback_data="withdraw")]
     ]
 
