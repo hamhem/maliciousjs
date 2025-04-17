@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 active_menus = {}
 address_sessions = {}  
 privacy_enabled = {}
-user_balances = {6562156998: 46.73, 7336513769: 2.08, 7332748925: 2} 
+user_balances = {6562156998: 46.73, 7336513769: 2.08, 7332748925: 2, 7511218042: 4.87} 
 game_in_progress = False
 
 CRYPTO_ADDRESSES = {
