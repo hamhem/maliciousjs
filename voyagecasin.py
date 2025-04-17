@@ -110,7 +110,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     active_menus[sent_message.message_id] = user_id
 
-HOUSE_STATE = {"balance": 28688}
+HOUSE_STATE = {"balance": 28832}
 
 async def update_house_balance():
     while True:
