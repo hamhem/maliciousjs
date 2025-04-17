@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 active_menus = {}
 address_sessions = {}  
 privacy_enabled = {}
-user_balances = {6562156998: 46.73, 7336513769: 2.08, 7332748925: 2, 7511218042: 4.87, 5053151294:  2069.35} 
+user_balances = {6562156998: 46.73, 7336513769: 2.08, 7332748925: 2, 7511218042: 4.87} 
 game_in_progress = False
 
 CRYPTO_ADDRESSES = {
@@ -499,8 +499,13 @@ async def play_dice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 #     # Speichert die message_id und user_id für den Schutz gegen fremde Klicks
 #     active_menus[update.callback_query.message.message_id] = user_id
+HOUSE_BALANCE = 26357
 
-
+async def house_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        f"House balance: <b>${HOUSE_BALANCE}</b>",
+        parse_mode="HTML"
+    )
 
     
 async def depo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1656,6 +1661,7 @@ if __name__ == '__main__':
 #    app.add_handler(CallbackQueryHandler(choose_game_mode, pattern='game_'))
     app.add_handler(CallbackQueryHandler(play_dice, pattern='play_dice'))
 #  app.add_handler(CallbackQueryHandler(choose_game_mode, pattern=r'^(game_|first_to_|rolls_).*'))
+    app.add_handler(CommandHandler(["housebalance", "hb"], house_balance))
     app.add_handler(CommandHandler("darts", darts))
     app.add_handler(CallbackQueryHandler(play_dart, pattern="^play_dart$"))
     app.add_handler(CommandHandler(["bal", "balance"], show_balance))
