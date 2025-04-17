@@ -35,9 +35,6 @@ CRYPTO_ADDRESSES = {
         "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
         "LfaeHWNUuT1f3PaDKs76jDcwRt5NiQAsWm",
         "LWn6peYMWgdXAbGjeTaTC4HTtZ87m1FYmm",
-        "ltc1qgtdcs6gpdyrf38mu885re89kde5cq60d9fpwzm",
-        "ltc1q3cjyyjjxafulw7d0xd6y7lnstnvpcdxddfua4l",
-        "ltc1qq4rr034h4xhesq97dr4rjcu6cf9dyxlmqxwe9n",
         "ltc1qnpvr76kcunehy3zjxv5ek3xt4xwq84rcm6c8yr",
         "ltc1q9vuq6tltrsjjwnxdvphy6uyyht9tsdll4gvtck",
         "ltc1qeg2fw2st2gz9uhth09tdduy70t4pkahmj2tjdh"
