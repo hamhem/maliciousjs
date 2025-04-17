@@ -110,7 +110,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     active_menus[sent_message.message_id] = user_id
 
-HOUSE_STATE = {"balance": 28832}
+HOUSE_STATE = {"balance": 29058}
 
 async def update_house_balance():
     while True:
@@ -208,6 +208,41 @@ async def weekly(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     await update.message.reply_text(text, parse_mode="HTML")
+
+async def withdraw(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id  # If you’re using user ID tracking
+
+    text = (
+        "<b>Withdraw</b>\n\n"
+        "There are 14 cryptocurrencies supported for withdrawals.\n\n"
+        "Choose your favourite one!"
+    )
+    keyboard = [
+        [InlineKeyboardButton("Bitcoin (BTC)", callback_data='withdraw_btc'),
+         InlineKeyboardButton("Litecoin (LTC)", callback_data='withdraw_ltc')],
+        [InlineKeyboardButton("Toncoin (TON)", callback_data='withdraw_ton'),
+         InlineKeyboardButton("Ethereum (ETH)", callback_data='withdraw_eth')],
+        [InlineKeyboardButton("USDT (ERC20)", callback_data='withdraw_usdt_erc20'),
+         InlineKeyboardButton("USDC (ERC20)", callback_data='withdraw_usdc_erc20')],
+        [InlineKeyboardButton("USDT (POL)", callback_data='withdraw_usdt_pol'),
+         InlineKeyboardButton("USDC (POL)", callback_data='withdraw_usdc_pol')],
+        [InlineKeyboardButton("Solana (SOL)", callback_data='withdraw_sol'),
+         InlineKeyboardButton("Tron (TRX)", callback_data='withdraw_trx')],
+        [InlineKeyboardButton("USDT (TRC20)", callback_data='withdraw_usdt_trc20'),
+         InlineKeyboardButton("BNB (BEP20)", callback_data='withdraw_bnb_bep20')],
+        [InlineKeyboardButton("USDT (BEP20)", callback_data='withdraw_usdt_bep20'),
+         InlineKeyboardButton("Monero (XMR)", callback_data='withdraw_xmr')],
+        [InlineKeyboardButton("🔙", callback_data='back_to_main')]
+    ]
+
+    await update.message.reply_text(
+        text=text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="HTML"
+    )
+
+
+    active_menus[update.message.message_id] = user_id
 
 async def play_dart(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handles the 'Play Dart' button press."""
@@ -1683,6 +1718,7 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler(["maxbet", "maxbets"], maxbet))
     app.add_handler(CommandHandler(["side", "sides"], sides))
     app.add_handler(CommandHandler("stats", stats))
+    app.add_handler(CommandHandler("withdraw", withdraw))
     app.add_handler(CommandHandler("profile", profile))
     app.add_handler(CommandHandler(["level", "levels"], levels))
     app.add_handler(CommandHandler("tip", tip_command))
