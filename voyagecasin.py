@@ -499,6 +499,7 @@ async def play_dice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 #     # Speichert die message_id und user_id für den Schutz gegen fremde Klicks
 #     active_menus[update.callback_query.message.message_id] = user_id
+
 HOUSE_BALANCE = 26357
 
 async def house_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
