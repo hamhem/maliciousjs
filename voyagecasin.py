@@ -110,6 +110,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     active_menus[sent_message.message_id] = user_id
 
+HOUSE_STATE = {"balance": 28688}
+
+async def update_house_balance():
+    while True:
+        await asyncio.sleep(60)
+        change = random.randint(-100, 100)
+        HOUSE_STATE["balance"] += change
+        # Optional: Clamp to a minimum of 0
+        HOUSE_STATE["balance"] = max(HOUSE_STATE["balance"], 0)
+
+async def house_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        f"House balance: <b>${HOUSE_STATE['balance']}</b>",
+        parse_mode="HTML"
+    )
+
+# Add this function to start the updater in the background
+async def on_startup(app):
+    app.create_task(update_house_balance())
 
 async def tip_command(update, context):
     if not context.args:
@@ -500,13 +519,7 @@ async def play_dice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 #     # Speichert die message_id und user_id für den Schutz gegen fremde Klicks
 #     active_menus[update.callback_query.message.message_id] = user_id
 
-HOUSE_BALANCE = 26357
 
-async def house_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        f"House balance: <b>${HOUSE_BALANCE}</b>",
-        parse_mode="HTML"
-    )
 
     
 async def depo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1675,4 +1688,6 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler("tip", tip_command))
     app.add_handler(CallbackQueryHandler(button_handler))
     app.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, detect_group_add))
+    app.post_init = on_startup
+
     app.run_polling()
